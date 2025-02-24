@@ -23,11 +23,6 @@ namespace RuleChange
         }
 
 
-
-
-
-
-
         /// <summary>
         /// Creates a reistry key to run an executable at the specified location
         /// </summary>
