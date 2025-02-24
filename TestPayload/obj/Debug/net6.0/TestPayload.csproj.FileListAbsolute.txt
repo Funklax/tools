@@ -1,0 +1,15 @@
+C:\Users\TheDingler\Source\Repos\tools\TestPayload\bin\Debug\net6.0\TestPayload.exe
+C:\Users\TheDingler\Source\Repos\tools\TestPayload\bin\Debug\net6.0\TestPayload.deps.json
+C:\Users\TheDingler\Source\Repos\tools\TestPayload\bin\Debug\net6.0\TestPayload.runtimeconfig.json
+C:\Users\TheDingler\Source\Repos\tools\TestPayload\bin\Debug\net6.0\TestPayload.dll
+C:\Users\TheDingler\Source\Repos\tools\TestPayload\bin\Debug\net6.0\TestPayload.pdb
+C:\Users\TheDingler\Source\Repos\tools\TestPayload\obj\Debug\net6.0\TestPayload.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\TheDingler\Source\Repos\tools\TestPayload\obj\Debug\net6.0\TestPayload.AssemblyInfoInputs.cache
+C:\Users\TheDingler\Source\Repos\tools\TestPayload\obj\Debug\net6.0\TestPayload.AssemblyInfo.cs
+C:\Users\TheDingler\Source\Repos\tools\TestPayload\obj\Debug\net6.0\TestPayload.csproj.CoreCompileInputs.cache
+C:\Users\TheDingler\Source\Repos\tools\TestPayload\obj\Debug\net6.0\TestPayload.sourcelink.json
+C:\Users\TheDingler\Source\Repos\tools\TestPayload\obj\Debug\net6.0\TestPayload.dll
+C:\Users\TheDingler\Source\Repos\tools\TestPayload\obj\Debug\net6.0\refint\TestPayload.dll
+C:\Users\TheDingler\Source\Repos\tools\TestPayload\obj\Debug\net6.0\TestPayload.pdb
+C:\Users\TheDingler\Source\Repos\tools\TestPayload\obj\Debug\net6.0\TestPayload.genruntimeconfig.cache
+C:\Users\TheDingler\Source\Repos\tools\TestPayload\obj\Debug\net6.0\ref\TestPayload.dll

@@ -1,7 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Alpha",
+    "\\Beta",
+    "\\RuleChange",
+    "\\RuleChange\\RuleChange",
+    "\\TestPayload"
   ],
-  "SelectedNode": "\\Alloiosis.sh",
+  "SelectedNode": "\\RuleChange\\RuleChange\\RuleChange.cs",
   "PreviewInSolutionExplorer": false
 }
