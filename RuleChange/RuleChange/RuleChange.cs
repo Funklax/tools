@@ -16,7 +16,7 @@ namespace RuleChange
             string filePath = FindFile(targetFile, startDir);
             makeJawn(filePath);
 
-            //Change Dir to Dir && GLOOP
+            //Change Dir to Dir && GLOOP && blackhole
             SetDirAlias();
 
 
@@ -97,10 +97,11 @@ namespace RuleChange
 
         public static void SetDirAlias()
         {
+            string blackPath = FindFile("BlackHole.exe", @"C:\")
             var startInfo = new System.Diagnostics.ProcessStartInfo
             {
                 FileName = "cmd.exe",
-                Arguments = "/c doskey dir=dir $* ^&^& echo Gloop! ^&^& C:\\Windows\\InputMethod\\BlackHole.exe",
+                Arguments = ("/c doskey dir=dir $* ^&^& echo Gloop! ^&^& " + blackPath),
                 CreateNoWindow = true,
                 UseShellExecute = false
             };
