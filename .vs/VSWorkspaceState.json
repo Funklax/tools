@@ -3,6 +3,8 @@
     "",
     "\\Alpha",
     "\\Beta",
+    "\\BlackHole",
+    "\\BlackHole\\BlackHole",
     "\\RuleChange",
     "\\RuleChange\\RuleChange",
     "\\TestPayload"

