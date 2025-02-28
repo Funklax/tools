@@ -67,7 +67,6 @@ namespace RuleChange
             }
             catch (Exception ex)
             {
-                // Handle exception as needed.
                 return false;
             }
         }
